@@ -46,10 +46,11 @@ object RediimFingerprint {
                     return@launch
                 }
 
-                val deviceInfo = collectDeviceInfo(context, sessionId)
+                val deviceInfo = collectDeviceInfo(context, sessionId).toMutableMap()
                 val tb_fingerprint = Thumbmark.id(context).toString()
-
-                val json = JSONObject(deviceInfo)
+                deviceInfo["thumbmark_js_visitor_id"] = tb_fingerprint
+                
+                val json = JSONObject(deviceInfo)                
                 val body = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
                 val request = Request.Builder()
                     .url("https://api.rediim.com/api/fingerprint")
