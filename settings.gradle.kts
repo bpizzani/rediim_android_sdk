@@ -1,10 +1,8 @@
 pluginManagement {
     repositories {
         google()
-        mavenCentral()
         gradlePluginPortal()
-        maven(url = "https://jitpack.io")
+        mavenCentral()
     }
 }
-
 rootProject.name = "rediim_android_sdk"
