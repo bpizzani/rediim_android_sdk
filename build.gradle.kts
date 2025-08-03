@@ -6,31 +6,33 @@ plugins {
 
 android {
     namespace = "com.rediim.sdk"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+        }
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = "11"
-    }
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            from(components["release"])
-            groupId = "com.github.bpizzani"
-            artifactId = "rediim_android_sdk"
-            version = "1.0.7" // match the Git tag exactly!
-        }
+        jvmTarget = "1.8"
     }
 }
 
