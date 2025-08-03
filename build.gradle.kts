@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library") version "7.4.2"
     kotlin("android") version "1.9.0"
-    `maven-publish`
+    id("maven-publish") // ✅ Required by JitPack to publish
 }
 
 android {
