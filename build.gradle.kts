@@ -37,6 +37,11 @@ android {
     }
 }
 
+// Disable Dokka tasks defensively at configuration time
+gradle.taskGraph.whenReady {
+    tasks.filter { it.name.contains("dokka", ignoreCase = true) }.forEach { it.enabled = false }
+}
+
 // Must be after 'android' is fully configured
 afterEvaluate {
     publishing {
@@ -45,12 +50,9 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.bpizzani"
                 artifactId = "rediim_android_sdk"
-                version = "1.1.2" // Must match the Git tag exactly
+                version = "1.1.3" // Must match the Git tag exactly
             }
         }
-    }
-   tasks.matching { it.name.contains("dokka", ignoreCase = true) }.configureEach {
-        enabled = false
     }
 }
 
