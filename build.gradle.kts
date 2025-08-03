@@ -19,6 +19,7 @@ android {
         }
     }
 
+    // Required for JitPack to publish the release variant
     publishing {
         singleVariant("release") {
             withSourcesJar()
@@ -34,6 +35,26 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+// Must be after 'android' is fully configured
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.bpizzani"
+                artifactId = "rediim_android_sdk"
+                version = "1.0.8" // Must match the Git tag exactly
+            }
+        }
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    maven(url = "https://jitpack.io")
 }
 
 dependencies {
