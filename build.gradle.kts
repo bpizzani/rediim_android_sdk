@@ -16,6 +16,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -50,7 +54,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.bpizzani"
                 artifactId = "rediim_android_sdk"
-                version = "1.1.6" // Must match the Git tag exactly
+                version = "1.1.7" // Must match the Git tag exactly
             }
         }
     }
