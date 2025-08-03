@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library") version "8.1.1"
     kotlin("android") version "1.9.0"
+    `maven-publish`
 }
 
 android {
@@ -19,6 +20,19 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.bpizzani"
+                artifactId = "rediim_android_sdk"
+                version = "1.0.1" // must match your tag name (see below)
+            }
+        }
     }
 }
 
