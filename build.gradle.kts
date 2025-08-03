@@ -29,7 +29,7 @@ publishing {
             from(components["release"])
             groupId = "com.github.bpizzani"
             artifactId = "rediim_android_sdk"
-            version = "1.0.6" // match the Git tag exactly!
+            version = "1.0.7" // match the Git tag exactly!
         }
     }
 }
