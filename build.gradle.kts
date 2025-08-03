@@ -30,7 +30,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.bpizzani"
                 artifactId = "rediim_android_sdk"
-                version = "1.0.2" // must match your tag name (see below)
+                version = "1.0.3" // must match your tag name (see below)
             }
         }
     }
