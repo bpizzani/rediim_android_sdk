@@ -14,4 +14,4 @@ dependencyResolutionManagement {
         maven(url = "https://jitpack.io")
     }
 }
-rootProject.name = "rediimsdk"
+rootProject.name = "rediim_android_sdk"
