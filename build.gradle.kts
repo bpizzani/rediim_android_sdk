@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    id("maven-publish")
+    id("com.android.library") version "7.4.2"
+    kotlin("android") version "1.9.0"
+    id("maven-publish") // Needed for JitPack to generate .pom
 }
 
 android {
@@ -20,6 +20,17 @@ android {
 
     kotlinOptions {
         jvmTarget = "11"
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["release"])
+            groupId = "com.github.bpizzani"
+            artifactId = "rediim_android_sdk"
+            version = "1.0.6" // match the Git tag exactly!
+        }
     }
 }
 
