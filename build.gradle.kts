@@ -1,45 +1,26 @@
 plugins {
-    id("com.android.library") version "7.4.2"
-    kotlin("android") version "1.9.0"
-    id("maven-publish") // ✅ Required by JitPack to publish
+    id("com.android.library")
+    kotlin("android")
+    id("maven-publish")
 }
 
 android {
     namespace = "com.rediim.sdk"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 33
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "com.github.bpizzani"
-                artifactId = "rediim_android_sdk"
-                version = "1.0.4" // must match your tag name (see below)
-            }
-        }
-    }
-}
-
-repositories {
-    google()
-    mavenCentral()
-    maven(url = "https://jitpack.io")
 }
 
 dependencies {
