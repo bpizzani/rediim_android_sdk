@@ -19,6 +19,10 @@ android {
         }
     }
 
+    tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
+        enabled = false
+    }
+
     // Required for JitPack to publish the release variant
     publishing {
         singleVariant("release") {
@@ -45,7 +49,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.bpizzani"
                 artifactId = "rediim_android_sdk"
-                version = "1.1.0" // Must match the Git tag exactly
+                version = "1.1.1" // Must match the Git tag exactly
             }
         }
     }
