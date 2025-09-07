@@ -32,7 +32,7 @@ object RediimFingerprint {
         clientId: String,
         call_type: String,
         userId: Int?,
-        coupon: JSONObject?,
+        coupon: JSONObject,
         callback: Callback
     ) {
         CoroutineScope(Dispatchers.IO).launch {
