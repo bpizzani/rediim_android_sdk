@@ -30,8 +30,9 @@ object RediimFingerprint {
         context: Context,
         apiKey: String,
         clientId: String,
+        call_type: String,
         userId: Int?,
-        promocode: String?,
+        coupon: String?, -- Json
         callback: Callback
     ) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -50,7 +51,8 @@ object RediimFingerprint {
                 val deviceInfo = collectDeviceInfo(context, sessionId).toMutableMap()
                 val tb_fingerprint = Thumbmark.id(context).toString()
                 deviceInfo["thumbmark_js_visitor_id"] = tb_fingerprint
-                deviceInfo["promocode"] = promocode?.toString() ?: ""
+                deviceInfo["coupon"] = coupon?.toString() ?: ""
+                deviceInfo["call_type"] = call_type?.toString() ?: ""
                 
                 val json = JSONObject(deviceInfo)                
                 val body = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
