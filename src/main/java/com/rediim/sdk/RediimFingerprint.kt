@@ -51,7 +51,7 @@ object RediimFingerprint {
                 val deviceInfo = collectDeviceInfo(context, sessionId).toMutableMap()
                 val tb_fingerprint = Thumbmark.id(context).toString()
                 deviceInfo["thumbmark_js_visitor_id"] = tb_fingerprint
-                deviceInfo["coupon"] = coupon?.toString() ?: ""
+                deviceInfo["coupon"] = coupon ?: null
                 deviceInfo["call_type"] = call_type?.toString() ?: ""
                 
                 val json = JSONObject(deviceInfo)                
