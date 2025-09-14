@@ -28,7 +28,7 @@ object RediimFingerprint {
 
     fun sendFingerprint(
         context: Context,
-        key: String?,
+        key: String,
         clientId: String,
         call_type: String,
         userId: Int?,
