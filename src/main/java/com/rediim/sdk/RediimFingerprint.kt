@@ -61,6 +61,7 @@ object RediimFingerprint {
                     .post(body)
                     .addHeader("Content-Type", "application/json")
                     .addHeader("Authorization", "Bearer $bearerToken")
+                    .addHeader("X-PUBLISHABLE-KEY", bearerToken)
                     .addHeader("X-CLIENT-ID", clientId)
                     .addHeader("user_identifier_client", userId?.toString() ?: "")
                     .build()
