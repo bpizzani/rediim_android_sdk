@@ -28,7 +28,7 @@ object RediimFingerprint {
 
     fun sendFingerprint(
         context: Context,
-        bearerToken: String?,
+        key: String?,
         clientId: String,
         call_type: String,
         userId: Int?,
@@ -60,8 +60,8 @@ object RediimFingerprint {
                     .url("https://api.rediim.com/api/fingerprint")
                     .post(body)
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization", "Bearer $bearerToken")
-                    .addHeader("X-PUBLISHABLE-KEY", bearerToken)
+                    .addHeader("Authorization", "Bearer $key")
+                    .addHeader("X-PUBLISHABLE-KEY", key)
                     .addHeader("X-CLIENT-ID", clientId)
                     .addHeader("user_identifier_client", userId?.toString() ?: "")
                     .build()
